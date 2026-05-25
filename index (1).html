@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Susan Kwok Piano · 私人鋼琴教學</title>
+<meta name="description" content="鋼琴教育 ≠ 鋼琴演奏。以「終生興趣」為教學目標的私人鋼琴課，香港面授及網上。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f6f1e8;
+    --ink: #1d1a14;
+    --ink-2: #6b665a;
+    --accent: #e7c46b;
+    --max: 1080px;
+    --font-display: "Noto Serif TC", "Songti TC", "PingFang TC", serif;
+    --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    --font-hand: Caveat, "Patrick Hand", cursive;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  /* ── Type ─────────────────────────────────────────────────────────────── */
+  .display { font-family: var(--font-display); letter-spacing: 0.02em; }
+  .hand    { font-family: var(--font-hand); }
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 36px;
+  }
+  section { padding: 64px 0; }
+
+  /* ── Nav ──────────────────────────────────────────────────────────────── */
+  .nav {
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 36px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .wordmark { display: inline-flex; align-items: baseline; gap: 8px; text-decoration: none; }
+  .wordmark .hand { font-size: 30px; font-weight: 600; line-height: 1; }
+  .wordmark .cn   { font-family: var(--font-display); font-size: 22px; font-weight: 500; line-height: 1; }
+  .nav-links { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .chip {
+    display: inline-block;
+    padding: 3px 12px;
+    border: 1.2px solid var(--ink);
+    border-radius: 999px;
+    font-size: 12px;
+    background: transparent;
+  }
+  .chip.accent { background: var(--accent); }
+  .chip.small { font-size: 10px; padding: 1px 8px; }
+
+  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  .btn {
+    display: inline-block;
+    padding: 11px 24px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: 2px 2px 0 0 rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  .btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 0 rgba(0,0,0,0.12); }
+  .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 0 rgba(0,0,0,0.08); }
+  .btn.primary { background: var(--accent); }
+  .btn.lg { padding: 13px 28px; font-size: 16px; }
+  .btn.sm { padding: 7px 16px; font-size: 13px; }
+
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  .hero { padding: 64px 0 48px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 68px;
+    line-height: 1.1;
+    font-weight: 700;
+    margin: 14px 0 18px;
+    letter-spacing: 0.01em;
+  }
+  .hero h1 .muted { color: var(--ink-2); font-weight: 400; }
+  .hero .sub {
+    font-size: 16px;
+    line-height: 1.85;
+    max-width: 420px;
+    opacity: 0.88;
+    margin: 0 0 28px;
+  }
+  .squiggle { display: block; margin: 0 0 24px; }
+  .cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .chips { margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* ── Image placeholder ────────────────────────────────────────────────── */
+  .img-slot {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid var(--ink);
+    background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(29,26,20,0.08) 10px 11px);
+    aspect-ratio: 4 / 5;
+  }
+  .img-slot .label {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.6px; text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .img-slot.wide { aspect-ratio: 16 / 10; }
+
+  /* ── Divider ──────────────────────────────────────────────────────────── */
+  .divider {
+    display: block;
+    width: 100%;
+    height: 12px;
+    margin: 0;
+  }
+
+  /* ── Section heads ────────────────────────────────────────────────────── */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    letter-spacing: 0.01em;
+  }
+  .section-lede {
+    font-size: 15px;
+    line-height: 1.85;
+    opacity: 0.78;
+    max-width: 580px;
+    margin: 0 0 32px;
+  }
+
+  /* ── About (philosophy) ───────────────────────────────────────────────── */
+  .about {
+    padding: 56px 0;
+    border-top: 1.5px solid var(--ink);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 56px;
+  }
+  .about p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 2;
+    opacity: 0.92;
+    margin: 0 0 22px;
+  }
+  .about .pullquote {
+    margin: 32px 0 28px;
+    padding: 22px 28px;
+    border-left: 3px solid var(--accent);
+    background: color-mix(in oklch, var(--accent) 12%, transparent);
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+  .about .closing {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.55;
+    font-weight: 600;
+    margin: 36px 0 12px;
+  }
+  .about .closing .muted { color: var(--ink-2); font-weight: 400; }
+  .about .signature {
+    font-family: var(--font-hand);
+    font-size: 38px;
+    color: var(--accent);
+    line-height: 1;
+    margin-top: 18px;
+  }
+  .highlight { background: color-mix(in oklch, var(--accent) 55%, transparent); padding: 0 4px; }
+  .underline-accent { border-bottom: 2px solid var(--accent); padding: 0 1px; }
+
+  /* ── Pillars ──────────────────────────────────────────────────────────── */
+  .pillars {
+    border-top: 1.5px solid var(--ink);
+    padding: 56px 0;
+  }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .card {
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    padding: 24px;
+    background: var(--paper);
+    box-shadow: 2px 3px 0 0 rgba(0,0,0,0.06);
+    min-height: 210px;
+  }
+  .card .num {
+    font-family: var(--font-display);
+    font-size: 38px;
+    color: var(--accent);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    margin: 12px 0 12px;
+    font-weight: 600;
+  }
+  .card p { font-size: 14px; line-height: 1.85; opacity: 0.85; margin: 0; }
+
+  /* ── Rates + testimonial ──────────────────────────────────────────────── */
+  .rates {
+    border-top: 1.5px solid var(--ink);
+    padding: 56px 0;
+  }
+  .rates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .rate-list { display: flex; flex-direction: column; gap: 10px; }
+  .rate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--ink);
+  }
+  .rate-row .amt {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .testimonial {
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    padding: 28px;
+    background: var(--paper);
+    box-shadow: 2px 3px 0 0 rgba(0,0,0,0.06);
+  }
+  .testimonial .q {
+    font-family: var(--font-display);
+    font-size: 72px;
+    color: var(--accent);
+    line-height: 0.5;
+    font-weight: 700;
+  }
+  .testimonial p {
+    font-size: 16px;
+    line-height: 1.95;
+    margin: 8px 0 16px;
+    opacity: 0.92;
+  }
+  .testimonial .who { font-size: 13px; opacity: 0.65; }
+
+  /* ── Contact ──────────────────────────────────────────────────────────── */
+  .contact {
+    border-top: 1.5px solid var(--ink);
+    padding: 56px 0 72px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact .channels { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .contact .channels a { text-decoration: none; font-size: 15px; opacity: 0.9; }
+  .contact .channels a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 14px; }
+  form label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-2); }
+  form input, form textarea {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--ink);
+    padding: 6px 0 8px;
+    outline: none;
+    border-radius: 0;
+    width: 100%;
+  }
+  form input:focus, form textarea:focus { border-color: var(--accent); border-bottom-width: 2px; }
+  form textarea { resize: vertical; min-height: 80px; }
+  form .submit-row { margin-top: 8px; display: flex; justify-content: flex-end; }
+
+  /* ── Footer ───────────────────────────────────────────────────────────── */
+  footer {
+    border-top: 1.5px solid var(--ink);
+    padding: 22px 36px;
+  }
+  .foot-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    opacity: 0.65;
+  }
+  footer a { text-decoration: underline; }
+
+  /* ── Responsive ───────────────────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    section, .hero, .about, .pillars, .rates, .contact { padding: 44px 0; }
+    .wrap, .nav-inner, .foot-inner { padding-left: 24px; padding-right: 24px; }
+    .hero-grid, .about-grid, .rates-grid, .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 48px; }
+    .section-title { font-size: 32px; }
+    .about .closing { font-size: 22px; }
+    .nav-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .nav-links { gap: 14px; }
+    .img-slot, .img-slot.wide { aspect-ratio: 4 / 3; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 40px; }
+    .section-title { font-size: 28px; }
+    .wordmark .hand { font-size: 26px; }
+    .wordmark .cn { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top">
+      <span class="hand">Susan Kwok</span>
+      <span class="cn">· 鋼琴</span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">關於我</a>
+      <a href="#philosophy">教學理念</a>
+      <a href="#rates">課程及學費</a>
+      <a href="#contact">聯絡</a>
+      <a href="#contact"><span class="chip accent small">學生登入</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="mono">私人鋼琴教學 · 香港 · 面授及網上</div>
+        <h1>
+          鋼琴教育<br />
+          <span class="muted">不等於</span><br />
+          鋼琴演奏。
+        </h1>
+        <svg class="squiggle" viewBox="0 0 180 8" width="180" height="8" aria-hidden="true">
+          <path d="M2 5 Q 12 1, 22 5 T 42 5 T 62 5 T 82 5 T 102 5 T 122 5 T 142 5 T 162 5 T 178 5"
+                fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <p class="sub">
+          我以鋼琴教育為事業，以「終生興趣」為目標。不催谷考試，不以證書為終點 ——
+          只希望每一位學生，都能真正享受彈奏的樂趣。
+        </p>
+        <div class="cta-row">
+          <a class="btn primary lg" href="#contact">預約試堂 →</a>
+          <a class="btn lg" href="#philosophy">了解教學理念</a>
+        </div>
+        <div class="chips">
+          <span class="chip">多年教學經驗</span>
+          <span class="chip">持續音樂進修</span>
+          <span class="chip">面授 · Zoom</span>
+        </div>
+      </div>
+      <div class="img-slot">
+        <div class="label">susan at the piano · warm portrait</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 800 12" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 6 Q 50 2, 100 6 T 200 6 T 300 6 T 400 6 T 500 6 T 600 6 T 700 6 T 800 6"
+        fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+</svg>
+
+<!-- ─── ABOUT / CORE BELIEF ───────────────────────────────────────────── -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">關於我 · A note before we begin</div>
+        <h2 class="section-title">
+          鋼琴是<br />
+          一門藝術。
+        </h2>
+        <p class="section-lede" style="margin-top:14px;">
+          不論程度、不論年齡，只要你對鋼琴音樂有興趣，我都樂意陪你走進這個世界。
+        </p>
+        <div style="margin-top: 24px;">
+          <div class="signature">Susan Kwok</div>
+        </div>
+      </div>
+      <div>
+        <p>
+          眼見許多小朋友年齡輕輕已考獲八級／演奏級，家長們亦對鋼琴老師要求越來越高。無可否認，老師的學歷、證書、過往的比賽成績，對家長來說固然是一個保障 ——
+          <span class="highlight">只是大家都忽略「合適」的重要。</span>
+        </p>
+        <p>
+          老師是否用心感受學生的學習需要？老師能否有效地引導學生明白彈奏技巧？許多時候並不是老師不懂得彈奏，而是老師未能以學生的角度出發 —— 錯用方法，令本來簡單的事情變得困難，令學生失去興趣。
+        </p>
+
+        <div class="pullquote">
+          我除了定期參加各類的音樂進修活動外，亦致力研究不同的教學方法，務求將鋼琴音樂發揚光大，令學生能以有效、輕鬆、有趣的課堂學習。
+        </div>
+
+        <p>
+          我以鋼琴教育為事業，教學方針以
+          <span class="underline-accent">終生興趣</span>
+          為目標 —— 不鼓勵催谷考試，亦不希望學生只為完成考試而學習，領取證書後從此不再碰鋼琴。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHILOSOPHY / 3 PILLARS ────────────────────────────────────────── -->
+<section class="pillars" id="philosophy">
+  <div class="wrap">
+    <div class="eyebrow">我的教學理念 · three pillars</div>
+    <h2 class="section-title">「合適」比「履歷」更重要。</h2>
+    <p class="section-lede">
+      老師的學歷、比賽成績固然是一個保障，但「合適」的方法，才是學生持續學習、真心喜愛鋼琴的關鍵。
+    </p>
+    <div class="pillar-grid">
+      <div class="card">
+        <div class="num">一</div>
+        <h3>用心感受</h3>
+        <p>從學生的角度出發，了解每位學生的學習需要、節奏與性格。</p>
+      </div>
+      <div class="card">
+        <div class="num">二</div>
+        <h3>有效引導</h3>
+        <p>以最簡單的方法引導學生明白彈奏技巧，不令本來簡單的事情變得困難。</p>
+      </div>
+      <div class="card">
+        <div class="num">三</div>
+        <h3>持續進修</h3>
+        <p>定期參與音樂進修活動，研究不同教學方法，務求課堂有效、輕鬆、有趣。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RATES + TESTIMONIAL ───────────────────────────────────────────── -->
+<section class="rates" id="rates">
+  <div class="wrap">
+    <div class="rates-grid">
+      <div>
+        <div class="eyebrow">課程及學費</div>
+        <h2 class="section-title">個別鋼琴課</h2>
+        <p class="section-lede" style="margin-bottom:24px;">
+          按學生年齡及程度安排課時。歡迎初學者、進階學生，以及希望重拾鋼琴的成人。
+        </p>
+        <div class="rate-list">
+          <div class="rate-row"><span>30 分鐘 · 兒童入門</span><span class="amt">HK$ 300</span></div>
+          <div class="rate-row"><span>45 分鐘 · 兒童 / 青少年</span><span class="amt">HK$ 420</span></div>
+          <div class="rate-row"><span>60 分鐘 · 進階 / 成人</span><span class="amt">HK$ 550</span></div>
+          <div class="rate-row"><span>網上課堂</span><span class="amt">同價</span></div>
+        </div>
+        <p style="margin-top:18px; font-size:13px; opacity:0.65;">
+          * 學費僅供參考，實際安排可於試堂後商討。
+        </p>
+      </div>
+      <div class="testimonial">
+        <div class="q">「</div>
+        <p>
+          女兒由抗拒練琴到主動坐上琴凳，是 Susan 老師教會我們：學琴不是為了一張證書，而是為了一份持久的喜愛。
+        </p>
+        <div class="who">— 學生家長 · Cheung 太</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="divider" viewBox="0 0 800 12" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 6 Q 50 2, 100 6 T 200 6 T 300 6 T 400 6 T 500 6 T 600 6 T 700 6 T 800 6"
+        fill="none" stroke="var(--ink)" stroke-width="1.2"/>
+</svg>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">聯絡</div>
+        <h2 class="section-title">歡迎查詢試堂</h2>
+        <p class="section-lede">
+          不論你是初學、重拾，還是為小朋友尋找合適的老師，歡迎透過 WhatsApp、電郵或下方表格留言。我會於 48 小時內回覆。
+        </p>
+        <div class="channels">
+          <a href="https://wa.me/85290000000">📱 WhatsApp · 9xxx xxxx</a>
+          <a href="/cdn-cgi/l/email-protection#dcb4b9b0b0b39cafa9afbdb2b7abb3b7acb5bdb2b3f2bfb3b1">✉︎ <span class="__cf_email__" data-cfemail="6c04090000032c1f191f0d02071b03071c050d0203420f0301">[email&#160;protected]</span></a>
+        </div>
+      </div>
+      <form action="mailto:hello@susankwokpiano.com" method="post" enctype="text/plain">
+        <div>
+          <label for="name">姓名</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="contact">聯絡方法 (WhatsApp / 電郵)</label>
+          <input id="contact" name="contact" type="text" required />
+        </div>
+        <div>
+          <label for="message">留言</label>
+          <textarea id="message" name="message" rows="4" placeholder="學生年齡、程度、希望上課時間…"></textarea>
+        </div>
+        <div class="submit-row">
+          <button class="btn primary" type="submit">提交 →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="foot-inner">
+    <span>© Susan Kwok Piano · Hong Kong</span>
+    <span>學生園地 · <a href="#contact">登入 →</a></span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
